@@ -1,0 +1,26 @@
+#!/bin/bash
+# This hook is run after a new virtualenv is activated.
+
+proj_name=$(basename $VIRTUAL_ENV)
+proj_dir="~/projects/${proj_name}"
+
+make_projectdir() {
+    mkdir -p ${HOME}/projects/${proj_name}
+    #add2virtualenv $HOME/projects/$proj_name
+    cd ${HOME}/projects/${proj_name}
+}
+
+y_or_n() {
+    read -r -p "Do you want to create (and/or cd to) ${proj_dir}?
+[y]/n "
+    if [[ $REPLY =~ (^[Yy]$|^\s*$) ]]; then
+        make_projectdir
+    elif [[ $REPLY =~ ^[Nn]$ ]]; then
+        return
+    else
+        echo "Please enter 'y' or 'n':" 
+        y_or_n
+    fi
+}
+
+y_or_n
