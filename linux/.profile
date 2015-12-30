@@ -33,3 +33,4 @@ if [ $? -eq 0 ]; then
     . ${virtualenvwrapper}
 fi
 
+export ANSIBLE_INVENTORY=~/ansible/hosts
