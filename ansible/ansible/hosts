@@ -1,0 +1,14 @@
+[freebsd]
+cuboid
+
+[linux]
+deskside
+octothorpe
+precise
+
+[osx]
+hackintosh
+
+[freebsd:vars]
+ansible_python_interpreter=/usr/local/bin/python2.7
+ansible_connection=paramiko
